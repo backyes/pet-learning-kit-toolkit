@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f4d52">
+<meta name="format-detection" content="telephone=no">
+<title>Down the Rabbit-Hole · 中英对照朗读示例</title>
+<style>
+:root{--paper:#faf7f0;--ink:#221d17;--zh:#7d7264;--rule:#e6dcc8;--accent:#0f626b;--gold:#b8860b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+*{-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--paper);color:var(--ink);line-height:1.95;
+ font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+ overflow-wrap:break-word}
+.wrap{max-width:690px;margin:0 auto;padding:0 22px 80px}
+
+.hero{background:linear-gradient(135deg,#0d3b40,#126e6b 60%,#2b8a6b);color:#fff;
+ padding:38px 22px 30px;border-bottom:3px solid var(--gold)}
+.hero .inner{max-width:690px;margin:0 auto}
+.kicker{letter-spacing:.26em;font-size:.66rem;text-transform:uppercase;opacity:.72}
+.hero h1{font-family:Georgia,"Songti SC",serif;font-size:clamp(1.5rem,4.2vw,2.05rem);margin:.28em 0 .1em}
+.hero .sub{opacity:.9;font-size:.88rem;margin:.2em 0 0}
+.hero .meta{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;font-size:.7rem}
+.hero .meta span{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);
+ padding:3px 10px;border-radius:999px}
+
+.toolbar{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:6px;
+ background:rgba(250,247,240,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);
+ padding:8px 22px;margin:0 -22px 8px;flex-wrap:wrap}
+.tg{border:1px solid #ddd2bb;background:#fff;color:#6b5a3f;border-radius:8px;padding:5px 10px;
+ font-size:.76rem;cursor:pointer}
+.tg.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.sp{flex:1}
+
+.fullbox{margin:12px 0 2px;border-bottom:1px solid var(--rule);padding-bottom:6px}
+.fullbox>summary{cursor:pointer;font-size:.78rem;color:#8a7f6d;list-style:none;padding:6px 0}
+.fullbox>summary::-webkit-details-marker{display:none}
+.fullbox>summary::before{content:"▸ ";color:#b8ab94}
+.fullbox[open]>summary::before{content:"▾ "}
+.fullbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 0 10px}
+.fullbar audio{flex:1 1 260px;min-width:200px;height:34px}
+.rt2{border:1px solid #cfe0dd;background:#fff;color:var(--accent);border-radius:7px;padding:3px 9px;
+ font-size:.72rem;cursor:pointer}
+.rt2.on{background:var(--accent);color:#fff}
+
+.sec{padding:26px 0 6px}
+.sechead .num{font-size:.72rem;letter-spacing:.3em;color:#b09a72;text-transform:uppercase}
+.sechead h2{font-family:Georgia,serif;font-size:1.26rem;margin:4px 0;color:#31243f}
+.sechead .zhtitle{font-size:.82rem;color:#a2947e}
+.secbar{display:flex;gap:12px;align-items:center;margin-top:12px}
+.playall{border:0;background:none;color:var(--accent);font-size:.8rem;cursor:pointer;
+ border-bottom:1px dashed #a9cfcb;padding:0}
+.playall.playing{color:#b8860b;border-bottom-color:#e0c98a}
+.secbar .meta{font-size:.72rem;color:#b0a493}
+
+.prose .para{position:relative;font-family:Georgia,"Iowan Old Style",serif;font-size:1.05rem;
+ line-height:1.95;margin:0 0 .5em}
+.prose .para b{color:#8a3b2a;font-weight:600;background:linear-gradient(transparent 72%,#f6e3d8 72%)}
+.prose .para.playing{background:#fdf4dd}
+.prose .zh{font-size:.85rem;line-height:1.85;color:var(--zh);margin:0 0 1.45em}
+body.hide-zh .prose .zh{display:none}
+body.hide-zh .prose .para{margin-bottom:1.15em}
+.para .pbtn{position:absolute;left:-30px;top:.55em;width:22px;height:22px;border-radius:50%;
+ border:1px solid #ded3be;background:#fff;color:#9c8f79;font-size:10px;opacity:0;transition:.2s;padding:0}
+.para:hover .pbtn{opacity:.85}
+.para.playing .pbtn{opacity:1;background:var(--accent);color:#fff;border-color:var(--accent)}
+
+.vocabbox{margin:14px 0 6px;border-top:1px solid var(--rule);padding-top:10px}
+.vocabbox summary{font-size:.76rem;color:#a2947e;list-style:none;cursor:pointer}
+.vocabbox summary::-webkit-details-marker{display:none}
+.vocabbox summary::before{content:"＋ "}
+.vocabbox[open] summary::before{content:"− "}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{display:inline-flex;align-items:center;gap:5px;background:#f1f7f5;border:1px solid #dbe8e3;
+ border-radius:999px;padding:3px 9px;cursor:pointer;font-size:.76rem}
+.chip b{color:#1f6b53;font-weight:600}
+.chip i{font-style:normal;color:#8b8577;font-size:.74rem}
+.chip .mini{font-size:.66rem;opacity:.5}
+.chip.playing{background:var(--accent);border-color:var(--accent)}
+.chip.playing b,.chip.playing i{color:#fff}
+
+.spell{margin:30px 0 10px;background:#fff;border:1px solid var(--rule);border-radius:15px;padding:20px}
+.spell h2{font-family:Georgia,"Songti SC",serif;font-size:1.12rem;margin:0 0 4px;color:#31243f}
+.spell .sub{font-size:.83rem;color:#8a7f6d;margin:0 0 14px}
+.sitem{padding:11px 0;border-bottom:1px dashed #efe6d4}
+.sitem:last-child{border-bottom:0}
+.srow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pat{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1rem;letter-spacing:.16em;color:#241f3a}
+.pat b{color:#8a3b2a}
+.pat i{color:#cfc4b1;font-style:normal}
+.mean{font-size:.74rem;color:#a2947f}
+.sinput{flex:1 1 180px;min-width:130px;border:1px solid #ddd3bf;border-radius:9px;padding:8px 12px;
+ font-size:.95rem;font-family:Georgia,serif;background:#fffdf9}
+.sinput.ok{border-color:#4c9a6a;background:#f2fbf5}
+.sinput.bad{border-color:#c2554f;background:#fdf3f2}
+.sbtn{border:1px solid #ddd3bf;background:#fff;color:#5f5240;border-radius:8px;padding:6px 11px;
+ font-size:.78rem;cursor:pointer}
+.sbtn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.sbtn.mic{color:#1f6b53;border-color:#cfe3da;background:#f2f9f4}
+.fb{font-size:.78rem;margin-top:7px;line-height:1.75;display:none}
+.fb.show{display:block}
+.fb.bad{color:#b23b35}
+.fb.ok{color:#2f7a52;font-weight:600}
+.fb code{background:#f4efe4;padding:1px 5px;border-radius:4px;font-family:ui-monospace,monospace}
+
+footer{margin:40px auto 0;padding:22px;border-top:1px solid var(--rule);max-width:690px;
+ font-size:.75rem;color:#9a9182;text-align:center;line-height:1.9}
+footer a{color:#7a6a4f}
+
+@media(max-width:700px){
+  .wrap{padding:0 16px 70px}
+  .toolbar{padding:7px 16px;margin:0 -16px 6px}
+  .hero{padding:30px 16px 24px}
+  .prose .para{font-size:1rem;line-height:1.9}
+  .para .pbtn{display:none}
+}
+@media print{.hero{background:#fff!important;color:#000!important}.toolbar,.secbar,.pbtn,.fullbox{display:none!important}}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="inner">
+  <div class="kicker">Demo · Alice's Adventures in Wonderland · Chapter I</div>
+  <h1>Down the <em style="color:#f2cf6b;font-style:normal">Rabbit-Hole</em></h1>
+  <p class="sub">中英对照 · 逐段朗读 · 词汇发音 · 拼写默写<br>用公有领域文本演示 pet-learning-kit 的排版与流程</p>
+  <div class="meta">
+    <span>🎧 全文 1:24</span>
+    <span>🔊 8 个单词</span>
+    <span>© 1865 · Public Domain</span>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <div class="toolbar">
+    <button id="tZh" class="tg on">中文</button>
+    <button id="tTap" class="tg">点读</button>
+    <span class="sp"></span>
+    <button id="fsDown" class="tg">A−</button>
+    <button id="fsUp" class="tg">A+</button>
+  </div>
+
+  <details class="fullbox">
+    <summary>🎧 连播（5 段 · 1:24）</summary>
+    <div class="fullbar">
+      <audio id="fulla" controls preload="metadata" src="audio/full.mp3"></audio>
+      <button class="rt2 on" data-a="fulla" data-r="1">1×</button>
+      <button class="rt2" data-a="fulla" data-r="0.75">0.75×</button>
+      <button class="rt2" data-a="fulla" data-r="1.25">1.25×</button>
+    </div>
+  </details>
+
+  <section class="sec" id="s1">
+    <header class="sechead">
+      <div class="num">01</div>
+      <h2>Down the Rabbit-Hole</h2>
+      <div class="zhtitle">掉进兔子洞</div>
+      <div class="secbar">
+        <button class="playall" data-sec="1">▶ 朗读本节</button>
+        <span class="meta">5 段</span>
+      </div>
+    </header>
+
+    <div class="prose">
+      <p class="para" data-i="1">Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had <b>peeped</b> into the book her sister was reading, but it had no pictures or conversations in it, "and what is the use of a book," thought Alice, "without pictures or conversation?"</p>
+      <p class="zh">爱丽丝挨着姐姐坐在河岸边，无事可做，开始觉得腻烦透顶：她朝姐姐正读着的那本书里偷看了那么一两眼，可书里既没有图画，也没有对话。“一本书要是没有图画、没有对话，”爱丽丝心想，“那还有什么用呢？”</p>
+
+      <p class="para" data-i="2">So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a <b>daisy-chain</b> would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.</p>
+      <p class="zh">于是她心里琢磨起来（她已尽力在琢磨了，因为大热天让她昏昏欲睡、脑子发木）：编一个雏菊花环的乐趣，值不值得费劲爬起来去摘雏菊？就在这时，一只粉红眼睛的白兔紧挨着她跑了过去。</p>
+
+      <p class="para" data-i="3">There was nothing so very <b>remarkable</b> in that; nor did Alice think it so very much <b>out of the way</b> to hear the Rabbit say to itself, "Oh dear! Oh dear! I shall be late!" But when the Rabbit actually took a watch out of its <b>waistcoat</b>-pocket, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with <b>curiosity</b>, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the <b>hedge</b>.</p>
+      <p class="zh">这本来也没什么特别稀奇的；听那兔子自言自语“哎呀！哎呀！我要迟到了！”，爱丽丝也不觉得有多大不了的。可当那兔子真从背心口袋里掏出一块怀表看了看、又匆匆赶路时，爱丽丝一下子站了起来——她猛然想到，自己从没见过哪只兔子有背心口袋，更没见过哪只兔子能从里头掏出一块表来。她好奇心大起，追着兔子跑过田野，幸亏正好赶上看它一头钻进树篱下的一个大兔子洞。</p>
+
+      <p class="para" data-i="4">In another moment down went Alice after it, never once considering how in the world she was to get out again.</p>
+      <p class="zh">转眼间，爱丽丝也跟着钻了进去，压根儿没想过自己到底要怎么再出来。</p>
+
+      <p class="para" data-i="5">The rabbit-hole went straight on like a <b>tunnel</b> for some way, and then dipped suddenly down, so suddenly that Alice had not a moment to think about stopping herself before she found herself falling down a very deep well.</p>
+      <p class="zh">那兔子洞先是像隧道一样笔直往前伸了一段，接着突然往下一沉——沉得那么突然，爱丽丝还没来得及想该怎么停住，就发现自己正往一口深井里掉。</p>
+    </div>
+
+    <details class="vocabbox">
+      <summary>本节生词 · 8</summary>
+      <div class="chips">
+        <button class="chip" data-a="audio/words/001.mp3"><b>peep</b><i>偷看</i><span class="mini">🔊</span></button>
+        <button class="chip" data-a="audio/words/002.mp3"><b>daisy-chain</b><i>雏菊花环</i><span class="mini">🔊</span></button>
+        <button class="chip" data-a="audio/words/003.mp3"><b>remarkable</b><i>不寻常的</i><span class="mini">🔊</span></button>
+        <button class="chip" data-a="audio/words/004.mp3"><b>waistcoat</b><i>马甲</i><span class="mini">🔊</span></button>
+        <button class="chip" data-a="audio/words/005.mp3"><b>curiosity</b><i>好奇心</i><span class="mini">🔊</span></button>
+        <button class="chip" data-a="audio/words/006.mp3"><b>hedge</b><i>树篱</i><span class="mini">🔊</span></button>
+        <button class="chip" data-a="audio/words/007.mp3"><b>tunnel</b><i>隧道</i><span class="mini">🔊</span></button>
+        <button class="chip" data-a="audio/words/008.mp3"><b>out of the way</b><i>不寻常的</i><span class="mini">🔊</span></button>
+      </div>
+    </details>
+  </section>
+
+  <section class="spell" id="spell">
+    <h2>✍️ 生词默写 · 60% 空缺</h2>
+    <p class="sub">每个词只露出约 40% 的字母，先点 🔊 听一遍，再凭记忆把完整单词打出来——写错的字母会逐位告诉你。完整版还会把错词自动收进「错题本」反复练。</p>
+    <div id="spellList"></div>
+  </section>
+
+</div>
+
+<footer>
+  原文：Lewis Carroll, <i>Alice's Adventures in Wonderland</i> (1865)，公有领域。<br>
+  译文与版式：pet-learning-kit ｜ 朗读：macOS <code>say</code>（Daniel, en-GB）
+</footer>
+
+<script>
+(function(){
+  var WORDS = [
+    ["peep","偷看"],["daisy-chain","雏菊花环"],["remarkable","不寻常的"],["waistcoat","马甲"],
+    ["curiosity","好奇心"],["hedge","树篱"],["tunnel","隧道"],["out of the way","不寻常的；偏僻的"]
+  ];
+
+  var cur=null, curEl=null, seq=null;
+
+  function clear(){
+    if(cur){ try{cur.pause();}catch(e){} }
+    cur=null;
+    document.querySelectorAll('.para.playing').forEach(function(x){x.classList.remove('playing')});
+    document.querySelectorAll('.chip.playing').forEach(function(x){x.classList.remove('playing')});
+    document.querySelectorAll('.playall.playing').forEach(function(x){x.classList.remove('playing');x.textContent='▶ 朗读本节';});
+  }
+  function playEl(el,src,cb){
+    if(curEl===el && cur && !cur.paused){ clear(); return; }
+    clear(); cur=new Audio(src); curEl=el;
+    el.classList.add('playing');
+    cur.onended=function(){ el.classList.remove('playing'); if(cb) cb(); };
+    var p=cur.play(); if(p&&p.catch) p.catch(function(){});
+  }
+
+  document.querySelectorAll('.pbtn').forEach(function(b){
+    b.addEventListener('click',function(e){
+      e.stopPropagation();
+      var para=b.closest('.para');
+      playEl(para,'audio/para/'+String(para.dataset.i).padStart(3,'0')+'.mp3');
+    });
+  });
+  document.querySelectorAll('.para').forEach(function(p){
+    p.addEventListener('click',function(e){
+      if(!document.body.classList.contains('tapmode')) return;
+      if(e.target.closest('a,button,details,summary')) return;
+      playEl(p,'audio/para/'+String(p.dataset.i).padStart(3,'0')+'.mp3');
+    });
+  });
+  document.querySelectorAll('.playall').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var paras=Array.prototype.slice.call(btn.closest('.sec').querySelectorAll('.para'));
+      if(seq){ seq=null; clear(); return; }
+      var i=0; seq=true; btn.classList.add('playing'); btn.textContent='⏸ 停止';
+      (function next(){
+        if(!seq||i>=paras.length){ seq=null; clear(); return; }
+        var p=paras[i++];
+        document.querySelectorAll('.para.playing').forEach(function(x){x.classList.remove('playing')});
+        cur=new Audio('audio/para/'+String(p.dataset.i).padStart(3,'0')+'.mp3');
+        curEl=p; p.classList.add('playing');
+        p.scrollIntoView({block:'center',behavior:'smooth'});
+        cur.onended=function(){ p.classList.remove('playing'); setTimeout(next,260); };
+        var pr=cur.play(); if(pr&&pr.catch) pr.catch(function(){});
+      })();
+    });
+  });
+  document.querySelectorAll('.chip').forEach(function(c){
+    c.addEventListener('click',function(){ playEl(c,c.dataset.a); });
+  });
+
+  var zh=document.getElementById('tZh'), tap=document.getElementById('tTap');
+  zh.onclick=function(){ document.body.classList.toggle('hide-zh'); zh.classList.toggle('on'); };
+  tap.onclick=function(){ document.body.classList.toggle('tapmode'); tap.classList.toggle('on'); };
+  var size=1;
+  document.getElementById('fsUp').onclick=function(){ size=Math.min(1.22,size+0.07); document.documentElement.style.fontSize=(size*100)+'%'; };
+  document.getElementById('fsDown').onclick=function(){ size=Math.max(0.86,size-0.07); document.documentElement.style.fontSize=(size*100)+'%'; };
+  document.querySelectorAll('.rt2').forEach(function(b){
+    b.onclick=function(){
+      var a=document.getElementById(b.dataset.a); a.playbackRate=parseFloat(b.dataset.r);
+      b.parentNode.querySelectorAll('.rt2').forEach(function(x){x.classList.remove('on')});
+      b.classList.add('on');
+    };
+  });
+
+  /* ---------- 默写 ---------- */
+  function pattern(w){
+    var pos=[]; for(var i=0;i<w.length;i++) if(/[A-Za-z]/.test(w[i])) pos.push(i);
+    var n=pos.length;
+    var vis=Math.max(2, Math.round(n*0.4)); if(vis>n-1) vis=Math.max(1,n-1);
+    var show={}; show[pos[0]]=1; if(n>1) show[pos[n-1]]=1;
+    var rem=vis-Object.keys(show).length;
+    for(var k=1;k<=rem;k++) show[pos[Math.min(n-1,Math.round(k*n/(rem+1)))]]=1;
+    var out='';
+    for(var j=0;j<w.length;j++){
+      var c=w[j];
+      if(/[A-Za-z]/.test(c)) out += show[j] ? '<b>'+c+'</b>' : '<i>_</i>';
+      else if(c===' ') out += '&nbsp;&nbsp;';
+      else out += '<b>'+c+'</b>';
+    }
+    return out;
+  }
+  function letters(s){ return s.replace(/[^A-Za-z]/g,'').toLowerCase(); }
+
+  var list=document.getElementById('spellList');
+  list.innerHTML = WORDS.map(function(w,i){
+    return '<div class="sitem" id="it'+i+'">'
+      + '<div class="srow">'
+      + '<button class="sbtn mic" data-play="'+i+'">🔊</button>'
+      + '<span class="pat">'+pattern(w[0])+'</span>'
+      + '<span class="mean">'+w[1]+'</span>'
+      + '</div>'
+      + '<div class="srow" style="margin-top:8px">'
+      + '<input class="sinput" id="in'+i+'" placeholder="输入完整单词" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">'
+      + '<button class="sbtn primary" data-check="'+i+'">检查</button>'
+      + '<button class="sbtn" data-reveal="'+i+'">看答案</button>'
+      + '</div><div class="fb" id="fb'+i+'"></div></div>';
+  }).join('');
+
+  function fb(i,cls,html){
+    var el=document.getElementById('fb'+i);
+    el.className='fb show '+cls; el.innerHTML=html;
+  }
+  function playWord(i){
+    var a=new Audio('audio/words/'+String(i+1).padStart(3,'0')+'.mp3');
+    var p=a.play(); if(p&&p.catch) p.catch(function(){});
+  }
+  function check(i){
+    var w=WORDS[i][0], inp=document.getElementById('in'+i), v=inp.value.trim();
+    if(!v){ fb(i,'bad','先输入再检查'); return; }
+    if(v.toLowerCase().replace(/\s+/g,' ')===w.toLowerCase()){
+      inp.classList.remove('bad'); inp.classList.add('ok');
+      fb(i,'ok','✓ 正确！'+WORDS[i][1]); return;
+    }
+    inp.classList.add('bad');
+    var a=letters(v), b=letters(w), msg=[];
+    if(a===b){ msg.push('字母都对，但顺序或连字符不对。正确：<code>'+w+'</code>'); }
+    else{
+      if(a.length!==b.length) msg.push('长度不对：正确答案 <b>'+b.length+'</b> 个字母，你写了 <b>'+a.length+'</b> 个');
+      var lim=Math.min(a.length,b.length), c=0;
+      for(var k=0;k<lim&&c<3;k++) if(a[k]!==b[k]){ msg.push('第 '+(k+1)+' 个字母应为 <code>'+b[k]+'</code>，你写的是 <code>'+a[k]+'</code>'); c++; }
+    }
+    fb(i,'bad',msg.join('<br>'));
+  }
+  list.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    if(b.dataset.play!==undefined) return playWord(+b.dataset.play);
+    if(b.dataset.check!==undefined) return check(+b.dataset.check);
+    if(b.dataset.reveal!==undefined){
+      var i=+b.dataset.reveal;
+      var inp=document.getElementById('in'+i);
+      inp.value=WORDS[i][0]; inp.classList.add('bad');
+      fb(i,'bad','答案：<code>'+WORDS[i][0]+'</code>');
+    }
+  });
+  list.addEventListener('keydown',function(e){
+    if(e.key==='Enter' && e.target.classList.contains('sinput')) check(+e.target.id.replace('in',''));
+  });
+
+  /* 段落悬停按钮 */
+  document.querySelectorAll('.para').forEach(function(p){
+    var b=document.createElement('button');
+    b.className='pbtn'; b.textContent='▶'; b.setAttribute('aria-label','播放本段');
+    b.addEventListener('click',function(e){
+      e.stopPropagation();
+      playEl(p,'audio/para/'+String(p.dataset.i).padStart(3,'0')+'.mp3');
+    });
+    p.appendChild(b);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f4d52">
+<title>pet-learning-kit · 把英文原文变成学习包</title>
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#f7f3ea;color:#26211b;line-height:1.85;
+ font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif}
+.wrap{max-width:660px;margin:0 auto;padding:0 18px 60px}
+.hero{background:linear-gradient(135deg,#0d3b40,#126e6b 60%,#2b8a6b);color:#fff;
+ padding:46px 18px 38px;border-bottom:4px solid #b8860b}
+.hero .inner{max-width:660px;margin:0 auto}
+.kicker{letter-spacing:.24em;font-size:.65rem;text-transform:uppercase;opacity:.75}
+h1{font-family:Georgia,"Songti SC",serif;font-size:1.9rem;margin:.3em 0 .15em;line-height:1.25}
+h1 em{color:#f2cf6b;font-style:normal}
+.sub{opacity:.9;font-size:.9rem}
+.meta{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;font-size:.7rem}
+.meta span{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);padding:3px 10px;border-radius:999px}
+h2{font-family:Georgia,"Songti SC",serif;font-size:1.02rem;margin:34px 0 4px;color:#2f3b3a}
+h2 .n{color:#b09a72;font-size:.78rem;letter-spacing:.2em;margin-right:6px}
+.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid #e3ddcd;
+ border-radius:15px;padding:17px 19px;margin:11px 0;box-shadow:0 6px 20px rgba(40,60,50,.06);transition:.18s}
+.card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(40,60,50,.12)}
+.card .t{font-size:1rem;font-weight:700;color:#1f3a37;margin-bottom:4px}
+.card .t span{font-size:.75rem;font-weight:400;color:#9a9481;margin-left:6px}
+.card .d{font-size:.85rem;color:#6f6a5d}
+.tag{display:inline-block;font-size:.66rem;background:#e7f3f0;color:#0f626b;border-radius:999px;padding:2px 9px;margin-right:6px}
+.note{background:#fff;border:1px solid #e3ddcd;border-radius:13px;padding:15px 17px;margin:14px 0;font-size:.85rem}
+.note h3{margin:0 0 7px;font-size:.9rem;color:#0f626b}
+.note ul{padding-left:1.2em;margin:.4em 0}
+.note li{margin:.3em 0}
+code{background:#f1ece0;padding:1px 6px;border-radius:4px;font-size:.84em}
+footer{margin-top:38px;padding-top:18px;border-top:1px solid #e3ddcd;font-size:.74rem;color:#9a9481;text-align:center}
+footer a{color:#6f6a5d}
+</style>
+</head>
+<body>
+
+<div class="hero"><div class="inner">
+  <div class="kicker">pet-learning-kit</div>
+  <h1>Turn a page of English into a <em>study kit</em></h1>
+  <p class="sub">把一篇英文原文变成：中英对照 · 分级词汇 · 逐段朗读 · 听力题 · 拼写默写 · 错题本<br>零依赖、离线可用、手机可读</p>
+  <div class="meta">
+    <span>📖 书页式排版</span>
+    <span>🎧 本地 TTS</span>
+    <span>✍️ 60% 空缺默写</span>
+    <span>🧠 方法论已固化为 skill</span>
+  </div>
+</div></div>
+
+<div class="wrap">
+
+  <h2><span class="n">01</span>看效果</h2>
+
+  <a class="card" href="demo/alice-ch1.html">
+    <div class="t">📚 《爱丽丝梦游仙境》第一章示例 <span>公有领域</span></div>
+    <div class="d"><span class="tag">点这里</span>连续书页正文 + 浅灰译文注脚 + 逐段朗读 + 8 个单词发音 + 拼写默写。这就是成品的样子。</div>
+  </a>
+
+  <h2><span class="n">02</span>这套东西怎么工作</h2>
+
+  <div class="note">
+    <h3>9 步流水线</h3>
+    <ul>
+      <li>抓取 → 清洗（连字、OCR 错字）→ 分段</li>
+      <li><b>1:1 翻译</b>：一段原文配一段译文，先断言数量相等</li>
+      <li>词汇分级：A2 / B1 / B2 / C1 + <b>熟词僻义</b>（最高优先级）</li>
+      <li>考试对齐：同义替换表、从原文里挖语法点、写作句型</li>
+      <li>音频：<code>say</code> + <code>ffmpeg</code>，整篇/分节/逐段/单词四种粒度</li>
+      <li>排版：书页式阅读，译文降级为注脚</li>
+      <li>练习：默写 + 错题本</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <h3>为什么强调「书页式」</h3>
+    <p>第一版给每段套了卡片、留了 30px 播放按钮列、译文还带边框。截图挺整齐，读起来是灾难：107 段变成了 107 个小盒子。后来做的不是加装饰，而是拆结构——连续正文、按钮进页边、译文只降字号和颜色。</p>
+  </div>
+
+  <h2><span class="n">03</span>拿去用</h2>
+
+  <div class="note">
+    <h3>作为 agent skill</h3>
+    <p>把 <code>skills/english-reading-kit</code> 复制到 <code>~/.agents/skills/</code>，之后直接说「把这篇英文做成学习包」。</p>
+    <p><a href="https://github.com/backyes/pet-learning-kit/tree/main/skills/english-reading-kit">在 GitHub 上看 SKILL.md →</a></p>
+  </div>
+
+  <div class="note">
+    <h3>脚本</h3>
+    <ul>
+      <li><code>make_audio.py</code>：JSON/纯文本 → mp3，支持 concat 合成整章</li>
+      <li><code>check_pages.py</code>：标签平衡 / 音频引用 / 锚点 / JS 语法，一次体检</li>
+    </ul>
+  </div>
+
+  <footer>
+    <a href="https://github.com/backyes/pet-learning-kit">github.com/backyes/pet-learning-kit</a> ·
+    MIT（代码与文档） · 示例原文 1865 公有领域
+  </footer>
+
+</div>
+</body>
+</html>
